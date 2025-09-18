@@ -1,0 +1,13 @@
+body{
+    background-color: rgb(143, 67, 67);
+    align-items: center;
+    text-align: center;
+}
+
+.f{
+    align-items: flex-start;
+}
+
+.r{
+    align-items: end;
+}
