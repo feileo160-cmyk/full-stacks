@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo da Adivinhação</title>
+</head>
+<body>
+    <h1>Jogo da Adivinhação</h1>
+    <p>Digite um número entre 1 e 10:</p>
+
+    <!-- Campo de entrada -->
+    <input type="number" id="palpite" min="1" max="10">
+    <button onclick="verificarPalpite()">Tentar</button>
+
+    <!-- Mensagens e feedback -->
+    <p id="mensagem"></p>
+    <p><strong>Tentativas erradas:</strong> <span id="tentativas"></span></p>
+
+    <script>
+        const numeroSecreto = Math.floor(Math.random() * 10) + 1;
+        const tentativasErradas = [];
+
+        function verificarPalpite() {
+            const input = document.getElementById("palpite");
+            const palpite = parseInt(input.value);
+            const mensagem = document.getElementById("mensagem");
+            const listaTentativas = document.getElementById("tentativas");
+
+            if (isNaN(palpite) || palpite < 1 || palpite > 10) {
+                mensagem.textContent = "⚠️ Digite um número válido entre 1 e 10.";
+                return;
+            }
+
+            if (palpite === numeroSecreto) {
+                mensagem.textContent = "🎉 Parabéns! Você acertou o número!";
+                input.disabled = true;
+                document.querySelector("button").disabled = true;
+            } else {
+                if (!tentativasErradas.includes(palpite)) {
+                    tentativasErradas.push(palpite);
+                }
+
+                let dica = palpite < numeroSecreto ? "O número é maior." : "O número é menor.";
+                mensagem.textContent = `❌ Errado! ${dica} Tente novamente.`;
+                listaTentativas.textContent = tentativasErradas.join(", ");
+            }
+
+            input.value = "";
+            input.focus();
+        }
+    </script>
+</body>
+</html>
