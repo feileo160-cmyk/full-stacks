@@ -1,13 +1,10 @@
 body{
-    background-color: rgb(143, 67, 67);
+    background-color: black;
     align-items: center;
-    text-align: center;
 }
 
-.f{
-    align-items: flex-start;
-}
-
-.r{
-    align-items: end;
+#canvas{
+    background-color: black;
+    border: 2px solid white;
+    align-items: center;
 }
